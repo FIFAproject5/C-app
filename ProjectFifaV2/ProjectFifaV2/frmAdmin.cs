@@ -91,44 +91,32 @@ namespace ProjectFifaV2
                         var values = line.Split(',');
                         if(RB_load_matches.Checked)
                         {
-                        listA.Add(values[0]);
-                        listB.Add(values[1]);
-                        listC.Add(values[2]);
-                        listD.Add(values[3]);
-                        listE.Add(values[4]);
-                        listF.Add(values[5]);
-                        }
-                        else if (RB_load_teams.Checked)
-                        {
                             listA.Add(values[0]);
                             listB.Add(values[1]);
                             listC.Add(values[2]);
                             listD.Add(values[3]);
                             listE.Add(values[4]);
-                            string check = "";
-                            foreach (string item in listA)
-                            {
-                                
-                                if( check != item)
-                                {
-                                    check = item;
-                                    foreach(string itemB in listC)
-                                    {
+                            listF.Add(values[5]);
+
+
+
+                        }
+                        else if (RB_load_teams.Checked)
+                        {
+
+                            string item = values[0];
+                            string itemB = values[2];
+
+                            string B = item.Replace("\"", "");
+                            int A = Convert.ToInt32(B);
+
+                            string query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
+                            dbh.FillDT(query);
+
                                         
-                                        string B = item.Replace("\"", "");
-                                        MessageHandler.ShowMessage(item);
-                                        MessageHandler.ShowMessage(itemB);
 
-                                        int A = Convert.ToInt32(B);
-                                        string query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
-                                        dbh.FillDT(query);
-                                    }
-                                    
-                                    
-                                }
                                 
 
-                            }
                         }
                         else
                         {
