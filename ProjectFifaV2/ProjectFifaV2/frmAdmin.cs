@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace ProjectFifaV2
 {
@@ -67,11 +68,43 @@ namespace ProjectFifaV2
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
-            if (!(txtPath.Text == null))
+            if (!(txtPath.Text == ""))
             {
                 dbh.OpenConnectionToDB();
 
+                MessageHandler.ShowMessage(txtPath.Text);
 
+                    List<string> listA = new List<string>();
+                    List<string> listB = new List<string>();
+                    List<string> listC = new List<string>();
+                    List<string> listD = new List<string>();
+                    List<string> listE = new List<string>();
+                    List<string> listF = new List<string>();
+
+
+                using (var reader = new StreamReader(txtPath.Text))
+                {
+
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+
+                        listA.Add(values[0]);
+                        listB.Add(values[1]);
+                        listC.Add(values[2]);
+                        listD.Add(values[3]);
+                        listE.Add(values[4]);
+                        listF.Add(values[5]);
+                        
+                    }
+                }
+                foreach (string item in listA)
+                {
+                    
+                    MessageHandler.ShowMessage(item);
+                }
+                
 
                 dbh.CloseConnectionToDB();
             }
