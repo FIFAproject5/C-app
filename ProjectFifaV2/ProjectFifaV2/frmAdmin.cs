@@ -114,9 +114,13 @@ namespace ProjectFifaV2
                                     check = item;
                                     foreach(string itemB in listC)
                                     {
+                                        
+                                        string B = item.Replace("\"", "");
                                         MessageHandler.ShowMessage(item);
                                         MessageHandler.ShowMessage(itemB);
-                                        string query = "insert into Tblteams (team_id, teamname) values ('" + item + "','" + itemB + "')";
+
+                                        int A = Convert.ToInt32(B);
+                                        string query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
                                         dbh.FillDT(query);
                                     }
                                     
