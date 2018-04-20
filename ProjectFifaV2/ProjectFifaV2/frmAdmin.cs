@@ -89,21 +89,50 @@ namespace ProjectFifaV2
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
-
+                        if(RB_load_matches.Checked)
+                        {
                         listA.Add(values[0]);
                         listB.Add(values[1]);
                         listC.Add(values[2]);
                         listD.Add(values[3]);
                         listE.Add(values[4]);
                         listF.Add(values[5]);
-                        
+                        }
+                        else if (RB_load_teams.Checked)
+                        {
+                            listA.Add(values[0]);
+                            listB.Add(values[1]);
+                            listC.Add(values[2]);
+                            listD.Add(values[3]);
+                            listE.Add(values[4]);
+                            string check = "";
+                            foreach (string item in listA)
+                            {
+                                
+                                if( check != item)
+                                {
+                                    check = item;
+                                    foreach(string itemB in listC)
+                                    {
+                                        MessageHandler.ShowMessage(item);
+                                        MessageHandler.ShowMessage(itemB);
+                                        string query = "insert into Tblteams (team_id, teamname) values ('" + item + "','" + itemB + "')";
+                                        dbh.FillDT(query);
+                                    }
+                                    
+                                    
+                                }
+                                
+
+                            }
+                        }
+                        else
+                        {
+                            MessageHandler.ShowMessage("select an button");
+                        }
                     }
                 }
-                foreach (string item in listA)
-                {
-                    
-                    MessageHandler.ShowMessage(item);
-                }
+
                 
 
                 dbh.CloseConnectionToDB();
