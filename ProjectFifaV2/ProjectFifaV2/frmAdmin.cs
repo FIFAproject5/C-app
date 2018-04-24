@@ -91,12 +91,23 @@ namespace ProjectFifaV2
                         var values = line.Split(',');
                         if(RB_load_matches.Checked)
                         {
-                            listA.Add(values[0]);
-                            listB.Add(values[1]);
-                            listC.Add(values[2]);
-                            listD.Add(values[3]);
-                            listE.Add(values[4]);
-                            listF.Add(values[5]);
+                            string id = values[0];
+                            string home_team = values[1];
+                            string away_team = values[2];
+
+                            id = id.Replace("\"", "");
+                            int game_id = Convert.ToInt32(id);
+
+                            home_team = home_team.Replace("\"", "");
+                            int home_team_id = Convert.ToInt32(home_team);
+
+                            away_team = away_team.Replace("\"", "");
+                            int away_team_id = Convert.ToInt32(away_team);
+
+
+                            string query = "insert into Tblgames (game_id, hometeam, awayteam) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "')";
+                            dbh.FillDT(query);
+
 
 
 
