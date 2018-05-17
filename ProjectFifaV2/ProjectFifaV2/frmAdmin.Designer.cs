@@ -37,6 +37,7 @@
             this.btnAdminLogOut = new System.Windows.Forms.Button();
             this.RB_load_matches = new System.Windows.Forms.RadioButton();
             this.RB_load_teams = new System.Windows.Forms.RadioButton();
+            this.RB_load_score = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,11 +135,23 @@
             this.RB_load_teams.Text = "load teams";
             this.RB_load_teams.UseVisualStyleBackColor = true;
             // 
+            // RB_load_score
+            // 
+            this.RB_load_score.AutoSize = true;
+            this.RB_load_score.Location = new System.Drawing.Point(413, 74);
+            this.RB_load_score.Name = "RB_load_score";
+            this.RB_load_score.Size = new System.Drawing.Size(102, 21);
+            this.RB_load_score.TabIndex = 10;
+            this.RB_load_score.TabStop = true;
+            this.RB_load_score.Text = "Load Score";
+            this.RB_load_score.UseVisualStyleBackColor = true;
+            // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 630);
+            this.Controls.Add(this.RB_load_score);
             this.Controls.Add(this.RB_load_teams);
             this.Controls.Add(this.RB_load_matches);
             this.Controls.Add(this.btnAdminLogOut);
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Button btnAdminLogOut;
         private System.Windows.Forms.RadioButton RB_load_matches;
         private System.Windows.Forms.RadioButton RB_load_teams;
+        private System.Windows.Forms.RadioButton RB_load_score;
     }
 }

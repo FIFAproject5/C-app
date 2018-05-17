@@ -128,10 +128,17 @@ namespace ProjectFifaV2
 
                                 
 
+                        }else if(RB_load_score.Checked)
+                        {
+                            string home_team = values[1];
+                            string away_team = values[2];
+
+                            string query = "SELECT HomeTeam FROM TblGames WHERE HomeTeam =" + home_team + "";
+                            if(dbh.FillDT())
                         }
                         else
                         {
-                            MessageHandler.ShowMessage("select an button");
+                            MessageHandler.ShowMessage("select an option");
                         }
                     }
                 }
