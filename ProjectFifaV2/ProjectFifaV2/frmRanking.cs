@@ -51,5 +51,10 @@ namespace ProjectFifaV2
             }
             dbh.CloseConnectionToDB();
         }
+
+        private void lvRanking_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
