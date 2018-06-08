@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace ProjectFifaV2
         private string userName;
 
         List<TextBox> txtBoxList;
+        private DataSet table;
+        private object dgvAdminData;
 
         public frmPlayer(Form frm, string un)
         {
@@ -33,6 +36,7 @@ namespace ProjectFifaV2
             this.Text = "Welcome " + un;
         }
 
+
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             Hide();
@@ -42,14 +46,14 @@ namespace ProjectFifaV2
         {
             frmRanking.Show();
         }
-
+        
         private void btnClearPrediction_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to clear your prediction?", "Clear Predictions", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             if (result.Equals(DialogResult.OK))
             {
-                // Clear predections
-                // Update DB
+                //string query = "delete from TblPrediction where " + +" = user_id";
+                //ExecuteSQL();
             }
         }
 
@@ -57,7 +61,7 @@ namespace ProjectFifaV2
         {
             bool hasPassed;
             //This is the deadline for filling in the predictions
-            DateTime deadline = new DateTime(2014, 06, 12);
+            DateTime deadline = new DateTime(2018, 06, 12);
             DateTime curTime = DateTime.Now;
             int result = DateTime.Compare(deadline, curTime);
 
@@ -151,6 +155,8 @@ namespace ProjectFifaV2
 
         private void btnEditPrediction_Click(object sender, EventArgs e)
         {
+
+
 
         }
     }

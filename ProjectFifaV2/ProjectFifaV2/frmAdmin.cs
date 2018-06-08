@@ -84,16 +84,21 @@ namespace ProjectFifaV2
 
                 using (var reader = new StreamReader(txtPath.Text))
                 {
-
+                    string query = "delete from tblgames";
+                    ExecuteSQL(query);
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
                         var values = line.Split(',');
                         if(RB_load_matches.Checked)
                         {
+                            bool score = false;
+
                             string id = values[0];
                             string home_team = values[1];
                             string away_team = values[2];
+                            string home_team_score = values[3];
+                            string away_team_score = values[4];
 
                             id = id.Replace("\"", "");
                             int game_id = Convert.ToInt32(id);
@@ -104,12 +109,32 @@ namespace ProjectFifaV2
                             away_team = away_team.Replace("\"", "");
                             int away_team_id = Convert.ToInt32(away_team);
 
+                            if (home_team_score == "NULL")
+                            {
+                                home_team_score = away_team.Replace("\"", "");
+                                int home_team_score_int = Convert.ToInt32(home_team_score);
 
-                            string query = "insert into Tblgames (game_id, hometeam, awayteam) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "')";
+
+
+                                away_team_score = away_team.Replace("\"", "");
+                                int away_team_score_int = Convert.ToInt32(away_team_score);
+
+
+                                score = true;
+
+
+                                query = "insert into Tblgames (game_id, hometeam, awayteam, hometeamscore, awayteamscore) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "','" + home_team_score_int + "','" + away_team_score_int + "')";
+                                dbh.FillDT(query);
+                                MessageHandler.ShowMessage("hi");
+                            }
+                            if (score == true)
+                            {
+                            query = "insert into Tblgames (game_id, hometeam, awayteam) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "')";
                             dbh.FillDT(query);
+                            }
 
-
-
+                            
+                            
 
                         }
                         else if (RB_load_teams.Checked)
@@ -121,24 +146,17 @@ namespace ProjectFifaV2
                             string B = item.Replace("\"", "");
                             int A = Convert.ToInt32(B);
 
-                            string query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
+                             query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
                             dbh.FillDT(query);
 
                                         
 
                                 
 
-                        }else if(RB_load_score.Checked)
-                        {
-                            string home_team = values[1];
-                            string away_team = values[2];
-
-                            string query = "SELECT HomeTeam FROM TblGames WHERE HomeTeam =" + home_team + "";
-                            if(dbh.FillDT())
                         }
                         else
                         {
-                            MessageHandler.ShowMessage("select an option");
+                            MessageHandler.ShowMessage("select an button");
                         }
                     }
                 }
