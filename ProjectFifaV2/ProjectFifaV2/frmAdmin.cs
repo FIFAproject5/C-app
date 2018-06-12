@@ -84,8 +84,17 @@ namespace ProjectFifaV2
 
                 using (var reader = new StreamReader(txtPath.Text))
                 {
-                    string query = "delete from tblgames";
-                    ExecuteSQL(query);
+                    if (RB_load_matches.Checked)
+                    {
+                        string query = "delete from tblgames";
+                        ExecuteSQL(query);
+                    }
+                    if (RB_load_teams.Checked)
+                    {
+                        string query = "delete from tblteams";
+                        ExecuteSQL(query);
+                    }
+
                     while (!reader.EndOfStream)
                     {
                         var line = reader.ReadLine();
@@ -123,13 +132,13 @@ namespace ProjectFifaV2
                                 score = true;
 
 
-                                query = "insert into Tblgames (game_id, hometeam, awayteam, hometeamscore, awayteamscore) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "','" + home_team_score_int + "','" + away_team_score_int + "')";
+                                string query = "insert into Tblgames (game_id, hometeam, awayteam, hometeamscore, awayteamscore) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "','" + home_team_score_int + "','" + away_team_score_int + "')";
                                 dbh.FillDT(query);
-                                MessageHandler.ShowMessage("hi");
+                                MessageHandler.ShowMessage("loaded the matches");
                             }
                             if (score == true)
                             {
-                            query = "insert into Tblgames (game_id, hometeam, awayteam) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "')";
+                            string query = "insert into Tblgames (game_id, hometeam, awayteam) values ('" + game_id + "','" + home_team_id + "','" + away_team_id + "')";
                             dbh.FillDT(query);
                             }
 
@@ -146,12 +155,12 @@ namespace ProjectFifaV2
                             string B = item.Replace("\"", "");
                             int A = Convert.ToInt32(B);
 
-                             query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
+                            string query = "insert into Tblteams (team_id, teamname) values ('" + A + "','" + itemB + "')";
                             dbh.FillDT(query);
+                            MessageHandler.ShowMessage("loaded the teams");
 
-                                        
 
-                                
+
 
                         }
                         else

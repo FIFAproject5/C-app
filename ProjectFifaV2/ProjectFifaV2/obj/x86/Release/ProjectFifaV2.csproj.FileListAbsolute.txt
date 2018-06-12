@@ -12,3 +12,4 @@ C:\Users\D252874\Desktop\ProjectFifaV2\ProjectFifaV2\obj\x86\Release\ProjectFifa
 C:\Users\D252874\Desktop\ProjectFifaV2\ProjectFifaV2\obj\x86\Release\ProjectFifaV2.csproj.CoreCompileInputs.cache
 C:\Users\D252874\Desktop\ProjectFifaV2\ProjectFifaV2\obj\x86\Release\ProjectFifaV2.exe
 C:\Users\D252874\Desktop\ProjectFifaV2\ProjectFifaV2\obj\x86\Release\ProjectFifaV2.pdb
+C:\Users\D252874\Desktop\ProjectFifaV2\ProjectFifaV2\obj\x86\Release\ProjectFifaV2.csprojResolveAssemblyReference.cache
